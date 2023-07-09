@@ -275,7 +275,7 @@ DBusMessage *SpotifyDBus::getDBusMethodMessage(const char *interface, const char
 }
 void SpotifyDBus::addSignal(const char *_interface, const char *_name, void (*_callback)())
 {
-    for (std::vector<SpotifySignal>::const_iterator l = m_listeners.cbegin(); l < m_listeners.cend(); l++)
+    for (std::vector<const SpotifySignal>::const_iterator l = m_listeners.cbegin(); l < m_listeners.cend(); l++)
     {
         if (l->interface == _interface && l->name == _name)
         {

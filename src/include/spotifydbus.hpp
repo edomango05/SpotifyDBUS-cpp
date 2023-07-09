@@ -67,7 +67,7 @@ namespace Spotify
     private:
         DBusConnection *m_dbus_connection = nullptr;
         DBusError *m_dbus_error = nullptr;
-        std::vector<SpotifySignal> m_listeners = std::vector<SpotifySignal>();
+        std::vector<const SpotifySignal> m_listeners = std::vector<const SpotifySignal>();
         std::thread m_thread;
 
         void addSignal(const char *_interface, const char *_name, void (*_callback)());
@@ -76,7 +76,7 @@ namespace Spotify
         DBusMessage *getDBusSignalMessage(const char *interface, const char *method);
         DBusMessage *getProperty(const char *interface, const char *property);
         DBusMessage *sendMessage(DBusMessage *message);
-        
+
         DBusMessageIter getDictionaryValue(DBusMessageIter *cursor);
 
         void readWholeArray(DBusMessageIter *cursor, std::vector<const char *> *array);
