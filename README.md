@@ -1,21 +1,17 @@
-# Very basic c++ project template
-Includes `.vscode` project configuration for **Intellisense**, project structure and a customizable `Makefile`.
-## Makefile commands
-The following commands can be used with this Makefile:
+# SpotifyDBUS
 
-`make all`
+This project is a c++ wrapper for spotify dbus. Tested with c++23 std.
 
-`make clean`
+# Requirements
 
-`make program`
+TODO
+dbus-1 ...
 
-`make build`
+# Installation
+TODO
 
-`make release`
+# Contribution
+Feel free to contribute.
 
-`make debug`
-
-`make info`
-
-## Contribution
-Feel free to make suggestion to improve my project structure, I'm still learning. **=)**# BaseCPPProject
+# LICENCE
+TODO
