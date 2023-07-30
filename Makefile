@@ -1,5 +1,5 @@
 CXX      := -g++
-CXXFLAGS := -pedantic-errors -Wall -Wextra -rdynamic #-Werror
+CXXFLAGS := -pedantic-errors -Wall -Wextra -rdynamic -Werror
 CPPSTD   := -std=c++23
 LDFLAGS  := -L/usr/lib -lstdc++ -lm
 BUILD    := ./build

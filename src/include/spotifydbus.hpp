@@ -41,6 +41,8 @@ namespace Spotify
     {
     public:
         SpotifyDBus();
+
+        // properties
         const char *playbackStatus();
         const char *loopStatus();
 
@@ -61,17 +63,31 @@ namespace Spotify
 
         const SpotifyMetadata metadata();
 
+        // signals
         void listener();
         void onSeeked(void (*callback)());
+        void onPropertyChanged(void (*callback)());
+
+        // methods 
+        void next();
+        void previous();
+        void pause();
+        void togglePlaying();
+        void stop();
+        void play();
+        void seek(int64_t offset);
+        void setPosition(const char * trackId, int64_t offset);
+        void openUri(const char * uri);
+
 
     private:
         DBusConnection *m_dbus_connection = nullptr;
         DBusError *m_dbus_error = nullptr;
-        std::vector<const SpotifySignal> m_listeners = std::vector<const SpotifySignal>();
+        std::vector<SpotifySignal> m_listeners = std::vector<SpotifySignal>();
         std::thread m_thread;
 
         void addSignal(const char *_interface, const char *_name, void (*_callback)());
-        
+
         DBusMessage *getDBusMethodMessage(const char *interface, const char *method);
         DBusMessage *getDBusSignalMessage(const char *interface, const char *method);
         DBusMessage *getProperty(const char *interface, const char *property);

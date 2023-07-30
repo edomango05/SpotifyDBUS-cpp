@@ -2,7 +2,7 @@
 #include <string>
 #include "spotifydbus.hpp"
 
-int main(int argc, char *argv[])
+int main()
 {
     Spotify::SpotifyDBus client;
     std::cout << client.metadata().m_autoRating << std::endl;

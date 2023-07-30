@@ -269,13 +269,20 @@ void SpotifyDBus::onSeeked(void (*callback)())
     addSignal("org.mpris.MediaPlayer2.Player", "Seeked", callback);
 }
 
+void SpotifyDBus::onPropertyChanged(void (*callback)())
+{
+    addSignal("org.freedesktop.DBus.Properties", "PropertiesChanged", callback);
+}
+
+
 DBusMessage *SpotifyDBus::getDBusMethodMessage(const char *interface, const char *method)
 {
     return ::dbus_message_new_method_call("org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2", interface, method);
 }
+
 void SpotifyDBus::addSignal(const char *_interface, const char *_name, void (*_callback)())
 {
-    for (std::vector<const SpotifySignal>::const_iterator l = m_listeners.cbegin(); l < m_listeners.cend(); l++)
+    for (std::vector<SpotifySignal>::const_iterator l = m_listeners.cbegin(); l != m_listeners.cend(); l++)
     {
         if (l->interface == _interface && l->name == _name)
         {
